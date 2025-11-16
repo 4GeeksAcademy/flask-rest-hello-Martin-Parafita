@@ -7,7 +7,7 @@ db = SQLAlchemy()
 
 
 class User(db.Model):
-    __table_name__ = "user"
+    __tablename__ = "user"
 
     id: Mapped[int] = mapped_column(primary_key=True)
     email: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
@@ -22,7 +22,7 @@ class User(db.Model):
         }
 
 class Post(db.Model):
-    __table_name__ = "post"
+    __tablename__ = "post"
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] =  mapped_column(ForeignKey("user.id"))
     title: Mapped[str] = mapped_column(String(140))
@@ -38,7 +38,7 @@ class Post(db.Model):
 
 
 class Followers(db.Model):
-    __table_name__ = "followers"
+    __tablename__ = "followers"
     id: Mapped[int] = mapped_column(primary_key=True)
     user_from_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
     user_to_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
@@ -52,7 +52,7 @@ class Followers(db.Model):
 
 
 class Comment(db.Model):
-    __table_name__ = "comment"
+    __tablename__ = "comment"
     id: Mapped[int] = mapped_column(primary_key=True)
     comment_text: Mapped[str] = mapped_column(String(300))
     author_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
